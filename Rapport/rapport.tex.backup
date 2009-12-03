@@ -83,12 +83,12 @@ Grâce à cette expression, il est possible de résoudre l'equation de la
 dynamique. Ce schéma est particulièrement intéressant car il est
 inconditionnelement stable.
 
-\subsection{Résultats}
+\paragraph{Résultats:}~\\
 
 Les résultats de la Figure~\ref{defimp} ont été obtenu pour le schéma implicite
 d'euler pour $\Delta t=0.01\ s$ avec une poutre de longueur $L=500\ m$ (afin de
 pouvoir observer les reflexions) avec 160 éléments dans la longueur. L'effort
-$F=10000\ N$ est appliqué entre t=0.2s et t=0.4s.
+$F=10000\ N$ est appliqué entre t=0.2s et t=0.4s, sur une durée de calcul de 2s.
 
 \begin{figure}
 \begin{center}
@@ -109,12 +109,16 @@ pour t>0.4s car notre système n'est pas un système dissipatif, en effet nous
 avons négligé l'amortissement dans l'équation de la dynamique. Cette diminution
 de l'énergie totale du système est un problème bien connue du schéma d'Euler
 implicite. Pour diminuer ces effet de dissipation du schéma numérique, il faut
-diminuer $\Delta t$, mais cette diminution entraîne une augmentation importante
-du temps de calcul. La Figure~\ref{enerimp} permet d'illustrer cela, en effet
+diminuer $\Delta t$. La Figure~\ref{enerimp} permet d'illustrer cela, en effet
 le graphique de droite provient du calcul avec $\Delta t = 0.01\ s$ présente
 une attenuation de l'énergie plus importante que le graphique de droite
-provenant du calcul avec $\Delta t=0.005\ s$. 
-
+provenant du calcul avec $\Delta t=0.005\ s$. Mais la diminution de $\Delta t$
+va entrainer une augmentation du temps de calcul. La Figure~\ref{analimp}
+permet de voir que l'augmentation du temps de calcul croit beaucoup plus vite
+que l'erreur relative sur la valeur finale de l'energie totale ne diminue. Ce
+qui veut donc dire que pour avoir une attenuation faible il va falloir avoir un
+$\Delta t$ vraiment très petit et donc un temps de calcul trop important. On
+voit donc apparaître ici une des limites du schéma implicite d'Euler à un pas.
 \begin{figure}
 \begin{center}
  \includegraphics[scale=0.4]{Figures/fig3_mod.pdf}
@@ -124,5 +128,57 @@ gauche pour $\Delta t=0.01\ s$ et à droite pour $\Delta t=0.005\ s$}
 \end{center}
 \label{enerimp}
 \end{figure}
+
+\begin{figure}
+\begin{center}
+ \includegraphics[scale=0.32]{Figures/Erreur.pdf}
+\includegraphics[scale=0.32]{Figures/temps.pdf}
+\caption{Evolution du temps de calcul (à gauche) et de l'erreur relative
+ sur la valeur de l'énerge totale finale (à droite) en fonction du nombre de
+pas de temps}
+\end{center}
+\label{analimp}
+\end{figure}
+
+\subsection{Schéma explicite des différences centrées}
+
+Le principe de ce schéma est le suivant:
+\[
+\left \{
+\begin{array}{c @{=} c}
+    \dot{x}_{n+\frac{1}{2}} & \frac{1}{\Delta t} ( x_{n+1} - x_{n} ) \\
+    \ddot{x}_{n} & \frac{1}{\Delta t} ( \dot{x}_{n+\frac{1}{2}} -
+\dot{x}_{n-\frac{1}{2}} ) \\
+\end{array}
+\right.
+\]
+Ce schéma est conditionnellement stable. En effet ce schéma est un schéma de
+Newmark avec $\gamma=\frac{1}{2}$ et $\beta=0$, qui ne verifie donc pas la
+condition de stabilité inconditionnelle qui est $2\beta-\gamma\geq0$. La
+condition de stabilité conditionnelle pour le schéma des différences centrées
+est:
+$$ \Delta t \leq \Delta t_{crit}= \min_{j} \frac{2}{w_{j}}$$
+A l'aide de ce qui a été précédement fait pour obtenir la base modale, il est
+possible de déterminer le $\Delta t_{crit}$ et ainsi choisir une valeur de
+$\Delta t$ qui assure la convergence du calcul. Il est important de noter que
+dans le cadre de cette étude la détermination de $\Delta t_{crit}$ est assez
+facile et peu couteuse, mais cela n'est pas le cas dans la majeure partie des
+problèmes.
+$$
+\Delta t_{crit} = 2 / \sqrt{3.8617*10^{7}} = 3.21*10^{-4}\ s
+$$
+Dans notre cas, la durée de calcul est de 2s, il nous faut donc au moins 6215
+pas de calcul pour s'assurer la convergence du schéma. 
+\begin{figure}
+\begin{center}
+ \includegraphics[scale=0.32]{Figures/Erreur.pdf}
+\includegraphics[scale=0.32]{Figures/temps.pdf}
+\caption{Evolution du temps de calcul (à gauche) et de l'erreur relative
+ sur la valeur de l'énerge totale finale (à droite) en fonction du nombre de
+pas de temps}
+\end{center}
+\label{convdiv}
+\end{figure}
+
 
 \end{document}

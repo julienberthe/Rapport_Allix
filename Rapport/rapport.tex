@@ -145,7 +145,7 @@ pas de temps}
 Le principe de ce schéma est le suivant:
 \[
 \left \{
-\begin{array}{c @{=} c}
+\begin{array}{c @{=} l}
     \dot{x}_{n+\frac{1}{2}} & \frac{1}{\Delta t} ( x_{n+1} - x_{n} ) \\
     \ddot{x}_{n} & \frac{1}{\Delta t} ( \dot{x}_{n+\frac{1}{2}} -
 \dot{x}_{n-\frac{1}{2}} ) \\
@@ -165,7 +165,7 @@ dans le cadre de cette étude la détermination de $\Delta t_{crit}$ est assez
 facile et peu couteuse, mais cela n'est pas le cas dans la majeure partie des
 problèmes.
 $$
-\Delta t_{crit} = 2 / \sqrt{3.8617*10^{7}} = 3.21*10^{-4}\ s
+\Delta t_{crit} = \frac{2}{\sqrt{3.8617*10^{7}}} \approx 3.21*10^{-4}\ s
 $$
 Dans notre cas, la durée de calcul est de 2s, il nous faut donc au moins 6215
 pas de calcul pour s'assurer la convergence du schéma. La Figure~\ref{convdiv}
@@ -186,5 +186,46 @@ A la fin de cette partie, une comparaison entre ce schéma et un schéma de
 Newmark optimisé va être réalisée.
 
 \subsection{Schéma de Newmark à un pas}
+
+Le principe de ce schéma est le suivant avec $0\leq\gamma\leq1$ et
+$0\leq\beta\leq\frac{1}{2}$:
+\[
+\left \{
+\begin{array}{l}
+    \dot{x}_{n+1} = \dot{x}_{n} + \Delta t\left( \left( 1 - \gamma\right)  
+\ddot{x}_{n} + \gamma \ddot{x}_{n+1}\right)  \\
+    x_{n+1} = x_{n} + \Delta t\dot{x}_{n} + \frac{\Delta t^{2}}{2}\left(
+\left(1 - 2 \beta\right) \ddot{x}_{n} + 2\beta\ddot{x}_{n+1}\right)  \\
+\end{array}
+\right.
+\]
+Cette définition génère en fait une famille de schémas, chaque schéma étant
+défini par une valeur de $\gamma$ et de $\beta$. Dans cette famille, il y a des
+schéma inconditionnellement stable et des schémas conditionnellement stable.
+Les schéma conditionnelement stable vérifie la relation $2\beta-\gamma\geq0$
+déjà rencontrée précédement. Ensuite dans chaque famille, pour réaliser le
+choix de $\gamma$ et de $\beta$, il faut se donner un critère d'optimisation du
+schéma numérique. Le choix que nous avons fait est basé sur ce qui est fait
+dans le livre de Marc Bonnet et Attilio Frangi ``\textit{Analyse des solides
+déformables par la méthode des éléments finis}''. Le critère mis en place porte
+sur l'analyse du résidu du système où l'on a injecté le schéma de newmark et où
+$\{U_{n+1}\}$ et $\{U_{n}\}$ proviennent d'une fonction vectorielle $\{U(t)\}$
+vérifiant le système différentiel en temps continu. Le but est que l'analyse de
+la cohérence à l'ordre 3 en $\Delta t$ ne dépende pas du temps. Cela conduit à
+$\beta = \frac{1}{6}$ et $\gamma=\frac{1}{2}$. Mais ces valeurs conduisent à un
+schéma conditionnelement stable, il est donc possible de prendre $\beta =
+\frac{1}{4}$ qui donnera la meilleure precision avec une stabilité
+inconditionnelle.
+
+Il est interessant de comparer le $\Delta t_{crit}$ du schéma de newmark avec
+$\beta = \frac{1}{6}$ et $\gamma=\frac{1}{2}$ à celui des différences centrées.
+Pour le schéma de Newmark, on a:
+$$
+\Delta t_{crit} = \min_{j} \frac{1}{w_{j}} \frac{2}{\sqrt{2\gamma - 4\beta}} =
+3.21*10^{-4}*\frac{1}{\sqrt{1 - \frac{2}{3}}} \approx 5.56*10^{-4}\ s
+$$
+Le $\Delta t_{crit}$ du schéma de newmark optimisé et donc 1.7 fois plus grand
+que celui des différences centrées, ce qui permet donc d'utiliser un pas de
+temps plus grand pour les calculs et donc de diminuer les temps de calculs.
 
 \end{document}

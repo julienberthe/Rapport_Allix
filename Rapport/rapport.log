@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2009.10.19)  3 DEC 2009 15:19
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2009.10.19)  4 DEC 2009 19:58
 entering extended mode
  %&-line parsing enabled.
 **rapport.tex
@@ -474,8 +474,7 @@ File: Figures/depldifcendiv.pdf Graphic file (type pdf)
 <Figures/depldifcenconv.pdf, id=67, 489.83pt x 385.44pt>
 File: Figures/depldifcenconv.pdf Graphic file (type pdf)
 
-<use Figures/depldifcenconv.pdf> AED: lastpage setting LastPage [3 <./Figures/d
-epldifcendiv.pdf
+<use Figures/depldifcenconv.pdf> [3 <./Figures/depldifcendiv.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/depldifcendiv.pdf): PDF inclusion: Pag
 e Group detected which pdfTeX can't handle. Ignoring it.
@@ -483,29 +482,30 @@ e Group detected which pdfTeX can't handle. Ignoring it.
 
 pdfTeX warning: pdflatex (file ./Figures/depldifcenconv.pdf): PDF inclusion: Pa
 ge Group detected which pdfTeX can't handle. Ignoring it.
->] (./rapport.aux) ) 
+>] AED: lastpage setting LastPage [4] (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 2765 strings out of 94080
- 32135 string characters out of 1165310
+ 2767 strings out of 94080
+ 32157 string characters out of 1165310
  92822 words of memory out of 1500000
- 6023 multiletter control sequences out of 10000+50000
- 9389 words of font info for 23 fonts, out of 1200000 for 2000
+ 6024 multiletter control sequences out of 10000+50000
+ 10075 words of font info for 24 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  27i,9n,43p,291b,252s stack positions out of 5000i,500n,6000p,200000b,5000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf-t
-exlive/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/
-bluesky/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb
-></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texmf-te
-xlive/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/blu
-esky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy7.pfb><
-/usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fon
-ts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-s
-uper/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></
-usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on rapport.pdf (3 pages, 493332 bytes).
+{/usr/share/texmf/fonts/
+enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-texlive/fonts/type1/bluesk
+y/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb></u
+sr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/texmf-texli
+ve/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/blues
+ky/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb></usr/
+share/texmf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive
+/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/cm-super
+/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/
+share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/ty
+pe1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/
+sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on rapport.pdf (4 pages, 521814 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
+ 138 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

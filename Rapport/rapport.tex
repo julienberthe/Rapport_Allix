@@ -205,7 +205,32 @@ schéma inconditionnellement stable et des schémas conditionnellement stable.
 Les schéma conditionnelement stable vérifie la relation $2\beta-\gamma\geq0$
 déjà rencontrée précédement. Ensuite dans chaque famille, pour réaliser le
 choix de $\gamma$ et de $\beta$, il faut se donner un critère d'optimisation du
-schéma numérique. Le choix que nous avons fait est basé sur ce qui est fait
+schéma numérique. La figure~\ref{choixpara} vient illustrer cela. Sur la figure
+de gauche, la valeur de l'énergie finale du système est représentée en fonction
+des valeurs de $\gamma$ et de $\beta$. Il apparait clairement que pour une
+valeur de $\gamma$ supérieur à 0.5, la valeur de l'énergie finale est inférieur
+à la valeur attendu (proche des valeurs pour $\gamma=0.5$). Cela signifie que
+pour $\gamma$ supérieur à 0.5, le schéma numérique est dissipatif, on peut donc
+s'attendre à avoir une diminution de l'amplitude du déplacement avec le temps,
+ce qui ne représente pas la physique de notre système qui est non dissipatif.
+Pour la valeur de $\beta$, il est plus difficile de conclure avec la figure de
+gauche, par contre la figure de droite, qui représente le nombre de pas de
+temps nécessaire pour faire que le schéma converge en fonction de $\gamma$ et de
+$\beta$, permet de dire que lors du choix de $\beta$, il faut s'arranger pour
+éviter les pics visible sur la figure qui sont au niveau de la transition entre
+les schémas conditionnellement stables et le schéma inconditionnellement
+stables.
+\begin{figure}
+\begin{center}
+ \includegraphics[scale=0.28]{Figures/energie.png}
+\includegraphics[scale=0.22]{Figures/pasdetemps.png}
+\caption{Graphique de l'énergie totale en fonction de $\gamma$ et de $\beta$ à
+gauche et Graphique du nombre de pas de temps en fonction de $\gamma$ et de
+$\beta$ à droite}
+\label{choixpara}
+\end{center}
+\end{figure}
+Dans la suite, le choix $\gamma$ et de $\beta$ est basé sur ce qui est fait
 dans le livre de Marc Bonnet et Attilio Frangi ``\textit{Analyse des solides
 déformables par la méthode des éléments finis}''. Le critère mis en place porte
 sur l'analyse du résidu du système où l'on a injecté le schéma de newmark et où
@@ -227,5 +252,18 @@ $$
 Le $\Delta t_{crit}$ du schéma de newmark optimisé et donc 1.7 fois plus grand
 que celui des différences centrées, ce qui permet donc d'utiliser un pas de
 temps plus grand pour les calculs et donc de diminuer les temps de calculs.
+
+\subsection{Conclusion}
+
+Pour conclure, il est possible de dire que les schémas implicites sont
+intéressants car ils sont inconditionnellement stables, par contre ils
+introduisent des dissipations dans les résultats qui ne sont pas dues à la
+physique du système. C'est pourquoi les schéma de Newmark sont très utilisés en
+dynamique des solides, car pour des valeurs de $\gamma$ et de $\beta$
+optimisées, les schémas peuvent être inconditionnellement stable et assurer la
+conservation de l'énergie.\\
+
+AJOUTER UNE IMAGE DE NEWMARK AVEC GAMMA=0.5 ET BETA=0.25 ET MONTRER LE U EN 3D
+ET LA CONSERVATION DE L'ENERGIE (J'AI PLUS LE TRUC QUI VA BIEN CHEZ MOI LA :) )
 
 \end{document}
